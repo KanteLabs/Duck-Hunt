@@ -13,8 +13,11 @@ DuckHunt game or something similar to that, that is playable in the DOM.
 ## Initial thoughts on game structure
 
 (Write out what challenges you expect to encounter, or ideas you want to come up with)
-- I'll mostly likely need to create a matrix or grid system to keep track off matching pairs.
-- Scoring system could be based on lives or a timer 
+- Static background with a usage of sprites/gif to animate the different elements
+- Scoring system could be based on lives, timer, or amount of misses
+- Being able to make different sprites move across the screen at the same time or at random
+- Gun or shooting mechanism that would remove a element from the screen if a the user clicks on it
+- Change the cursor into possibly a image that is like a cross-hair
 
 ## Phases of Completion
 
