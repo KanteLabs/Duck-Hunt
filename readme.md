@@ -1,10 +1,10 @@
 *** Amidou Kante / July 10th ***
 
-# [Name of Game] Proposal
+# DuckHunt Proposal
  
-## What is [name of game]?
+## What is DuckHunt?
 
-Memory matching game, in which you test a users ability to remember the layout of a webpage.
+DuckHunt game or something similar to that, that is playable in the DOM. 
 
 ## Wireframe
 
