@@ -13,6 +13,8 @@ Memory matching game, in which you test a users ability to remember the layout o
 ## Initial thoughts on game structure
 
 (Write out what challenges you expect to encounter, or ideas you want to come up with)
+- I'll mostly likely need to create a matrix or grid system to keep track off matching pairs.
+- Scoring system could be based on lives or a timer 
 
 ## Phases of Completion
 
