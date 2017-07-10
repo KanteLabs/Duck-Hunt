@@ -1,10 +1,10 @@
-*** Name / Date ***
+*** Amidou Kante / July 10th ***
 
 # [Name of Game] Proposal
-
+ 
 ## What is [name of game]?
 
-(Brief description of the game, why you're choosing to make it)
+Memory matching game, in which you test a users ability to remember the layout of a webpage.
 
 ## Wireframe
 
