@@ -21,6 +21,8 @@ For a side-scroll game it would be something similar to jetpack joyride in which
 - Gun or shooting mechanism that would remove a element from the screen if a the user clicks on it
 - Change the cursor into possibly a image that is like a cross-hair
 
+-
+
 ## Phases of Completion
 
 - Create basic dom layout
