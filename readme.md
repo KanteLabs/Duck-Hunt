@@ -21,7 +21,11 @@ DuckHunt game or something similar to that, that is playable in the DOM.
 
 ## Phases of Completion
 
-(The steps or phases you expect to go through, and the tasks that you'll need to accomplish to reach each step. These should resemble the acceptance criteria we were working through earlier.)
+- Create basic dom layout
+- Able to make targets fly across the screen at random heights and time intervals
+- Able to click on a target and update a score
+- Able to track the mouse for optional game effects such as a tracking system that makes the targets avoid the mouse
+- 
 
 ## Links and Resources
 
