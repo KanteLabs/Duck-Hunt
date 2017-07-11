@@ -21,6 +21,8 @@ For a side-scroll game it would be something similar to jetpack joyride in which
 - Gun or shooting mechanism that would remove a element from the screen if a the user clicks on it
 - Change the cursor into possibly a image that is like a cross-hair
 
+
+
 - Player could interact with power ups, coins, and obstacles
 - Should have a collusion system, in which obstacles vary by height
 - Player should be static on x-axis but move up and down on a y-axis
@@ -34,6 +36,8 @@ For a side-scroll game it would be something similar to jetpack joyride in which
 - Able to make targets fly across the screen at random heights and time intervals
 - Able to click on a target and update a score
 - Able to track the mouse for optional game effects such as a tracking system that makes the targets avoid the mouse
+
+
 
 - Created the background with obstacles in place.
 - Tally a score based on a timer or for how long a player traveled
