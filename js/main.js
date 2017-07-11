@@ -6,5 +6,13 @@ window.onload = function(){
 const birdOne = $('.bird1');
 
 function startGame(){
-    $(birdOne).css({background: "blue"});
+    setTimeout(function(){
+        $(birdOne).animate({left: "800px"})
+        $(birdOne).animate({top: "100px"})
+    },100)
 }
+
+$(birdOne).click(function(){
+    console.log("Hit")
+    $(birdOne).css({display: "none"})
+})

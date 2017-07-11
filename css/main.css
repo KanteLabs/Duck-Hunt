@@ -1,6 +1,10 @@
 .bird1{
-    width: 50px;
-    height: 50px;
-    background: red;
+    width: 150px;
+    height: 150px;
+    background: url('../images/duck.gif');
+    position: relative;
+    top: 500px;
+    transition: 4s;
+    cursor: pointer;
 }
 
