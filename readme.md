@@ -1,32 +1,23 @@
-*** Amidou Kante / July 10th ***
+# [Name of Game]
 
-# DuckHunt Proposal
- 
-## What is DuckHunt?
+[screenshot]
 
-DuckHunt game or something similar to that, that is playable in the DOM. 
+## What is [name of game]?
 
-## Wireframe
+> Brief discussion of what the game is and why you chose to make it
 
-(Your wireframes go here. Preferably two or more)
+## Technical Discussion
 
-## Initial thoughts on game structure
+> List of the technologies you're using (HTML, CSS, JavaScript)
 
-(Write out what challenges you expect to encounter, or ideas you want to come up with)
-- Static background with a usage of sprites/gif to animate the different elements
-- Scoring system could be based on lives, timer, or amount of misses
-- Being able to make different sprites move across the screen at the same time or at random
-- Gun or shooting mechanism that would remove a element from the screen if a the user clicks on it
-- Change the cursor into possibly a image that is like a cross-hair
+### Notes on Game Structure
 
-## Phases of Completion
+> Code samples, description of challenges you overcame, etc.
 
-- Create basic dom layout
-- Able to make targets fly across the screen at random heights and time intervals
-- Able to click on a target and update a score
-- Able to track the mouse for optional game effects such as a tracking system that makes the targets avoid the mouse
-- 
+## The Making of [Your Game]
 
-## Links and Resources
+> Any credits or notes you feel you should add
 
-(Anything you've looked up so far or are thinking about using.)
+## Opportunities for Future Growth
+
+> If you had more time to work on your game, what would you do?
