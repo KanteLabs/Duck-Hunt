@@ -1,12 +1,17 @@
+.gameBoard {
+    background: url('images/stage.png') center no-repeat;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+}
 .bird1{
     width: 100px;
     height: 100px;
-    background: url('../images/duck.gif') center no-repeat;
+    top: 500px;
+    background: url('../images/duck2.gif') center no-repeat;
     background-size: contain;
     position: relative;
-    top: 500px;
-    transition: 1s linear;
-    cursor: pointer;
-    transform: rotateY(180deg);
+    transition: 2s linear;
+    cursor: crosshair;
 }
 
