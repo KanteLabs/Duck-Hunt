@@ -4,16 +4,17 @@
     height: 100vh;
     background-size: cover;
 }
-.bird1{
-    width: 100px;
-    height: 100px;
+.duck1{
     top: 500px;
     background: url('../images/duck2.gif') center no-repeat;
     background-size: contain;
     position: relative;
     cursor: crosshair;
 }
-.bird2{
-
+.duck2{
+    top: 500px;
+    background: url('../images/duck.gif') center no-repeat;
+    background-size: contain;
+    position: relative;
+    cursor: crosshair;
 }
-
