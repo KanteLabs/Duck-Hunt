@@ -12,7 +12,7 @@ const gameMode = [
         size: '300px',
         bullets: 5,
     },medium = {
-        speed: 2, 
+        speed: 10, 
         birds: 2,
         size: '200px',
         bullets: 3
@@ -29,17 +29,32 @@ function startGame(){
     difficulty.match('easy') ? moveBird(gameMode[0]) : difficulty.match('hard') ? moveBird(gameMode[2]) : moveBird(gameMode[1]);
 }
 function moveBird(difficulty){
-    let randomDist = (Math.random() * (2000 - 1500) + 1500); //specify random range for the distance
-    let randomTop = (Math.random() * (500 - (-300)) + (-300)); //specify random range for the height
-    setTimeout(function(){
-        $(birdOne).css({width: `${difficulty.size}`})
-        $(birdOne).css({height: `${difficulty.size}`})
-        $(birdOne).animate({left: `${randomDist}px`})
-        $(birdOne).animate({top: `${randomTop}px`})
-        $(birdOne).css({transition: `${difficulty.speed}s linear`})
-    },100)
+    if(difficulty.birds >= 2){
+        let birdsGroup = $('.gameBoard div')
+        for(let i = 0; i <difficulty.birds; i++){
+            setTimeout(function(){
+            randomDist = (Math.random() * (2100 - 1800) + 1800); //specify random range for the distance
+            randomTop = (Math.random() * (500 - (-300)) + (-300)); //specify random range for the height
+                $(birdsGroup[i]).css({display: 'block'})
+                $(birdsGroup[i]).css({width: `${difficulty.size}`})
+                $(birdsGroup[i]).css({height: `${difficulty.size}`})
+                $(birdsGroup[i]).animate({left: `${randomDist}px`})
+                $(birdsGroup[i]).animate({top: `${randomTop}px`})
+                $(birdsGroup[i]).css({transition: `${difficulty.speed}s linear`})
+            },100)
+        }
+    }else {
+        setTimeout(function(){
+            $(birdOne).css({display: 'block'})
+            $(birdOne).css({width: `${difficulty.size}`})
+            $(birdOne).css({height: `${difficulty.size}`})
+            $(birdOne).animate({left: `${randomDist}px`})
+            $(birdOne).animate({top: `${randomTop}px`})
+            $(birdOne).css({transition: `${difficulty.speed}s linear`})
+        },100)
+    }
 }
 $(birdOne).click(function(){
     console.log("Hit")
-    $(birdOne).css({display: "none"})
+    $(this).css({display: "none"})
 })
