@@ -13,7 +13,7 @@ const gameMode = [
         bullets: 5,
     },medium = {
         speed: 10, 
-        birds: 2,
+        birds: 4,
         size: '200px',
         bullets: 3
     },hard = {
@@ -25,16 +25,19 @@ const gameMode = [
 ]
 
 function startGame(){
-    let difficulty = 'medium'//prompt("Easy, Medium or Hard").toLowerCase();
+    let difficulty = 'easy'//prompt("Easy, Medium or Hard").toLowerCase();
     difficulty.match('easy') ? moveBird(gameMode[0]) : difficulty.match('hard') ? moveBird(gameMode[2]) : moveBird(gameMode[1]);
 }
 function moveBird(difficulty){
     if(difficulty.birds >= 2){
+        for(let i = 0; i <difficulty.birds; i++){
+            ($('.gameBoard').append('<div class="duck1">'))
+        }
         let birdsGroup = $('.gameBoard div')
         for(let i = 0; i <difficulty.birds; i++){
             let currBird = birdsGroup[i];
             setTimeout(function(){
-            randomDist = (Math.random() * (2100 - 1800) + 1800); //specify random range for the distance
+            randomDist = (Math.random() * (2300 - 2000) + 2000); //specify random range for the distance
             randomTop = (Math.random() * (500 - (-300)) + (-300)); //specify random range for the height
                 $(currBird).css({display: 'block'})
                 $(currBird).css({width: `${difficulty.size}`})
@@ -46,6 +49,8 @@ function moveBird(difficulty){
         }
     }else {
         setTimeout(function(){
+        randomDist = (Math.random() * (2300 - 2000) + 2000); //specify random range for the distance
+        randomTop = (Math.random() * (500 - (-300)) + (-300)); //specify random range for the height
             $(birdOne).css({display: 'block'})
             $(birdOne).css({width: `${difficulty.size}`})
             $(birdOne).css({height: `${difficulty.size}`})
