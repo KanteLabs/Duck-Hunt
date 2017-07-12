@@ -38,6 +38,14 @@ function moveBird(difficulty){
         for(let i = 0; i <difficulty.birds; i++){
             ($('.gameBoard').append('<div class="duck1">'))
         }
+        $('.duck1').click(function(){
+            console.log('hi');
+            $(this).animate({transition: '0s'})
+            $(this).css({background: "url('./images/shotDuck.png') center no-repeat"})
+            setTimeout(()=>{
+                $(this).css({opacity: '0'});
+            },700)
+        })
         let birdsGroup = $('.gameBoard .duck1')
         for(let i = 0; i <difficulty.birds; i++){
             let currBird = birdsGroup[i];
