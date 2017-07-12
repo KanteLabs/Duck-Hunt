@@ -11,7 +11,7 @@ For a side-scroll game it would be something similar to jetpack joyride in which
 ## Wireframe
 
 (Your wireframes go here. Preferably two or more)
-('Duck hunt image')['images/duckHuntWireframe.png']
+[image]:images/duckHuntWireframe.png
 
 ## Initial thoughts on game structure
 
