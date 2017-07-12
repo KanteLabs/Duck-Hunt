@@ -21,3 +21,11 @@
     cursor: crosshair;
     display: none;
 }
+.hud {
+    position: absolute;
+    bottom: 0;
+}
+
+.round p {
+    font-size: 5em;
+}

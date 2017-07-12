@@ -21,11 +21,16 @@ const gameMode = [
         birds: 3,
         size: '150px',
         bullets: 1
+    },insane = {
+        speed: 1,
+        birds: 10,
+        size: '100px',
+        bullets: 3
     }
 ]
 
 function startGame(){
-    let difficulty = 'easy'//prompt("Easy, Medium or Hard").toLowerCase();
+    let difficulty = 'medium'//prompt("Easy, Medium, Hard or Insane?").toLowerCase();
     difficulty.match('easy') ? moveBird(gameMode[0]) : difficulty.match('hard') ? moveBird(gameMode[2]) : moveBird(gameMode[1]);
 }
 function moveBird(difficulty){
@@ -33,7 +38,7 @@ function moveBird(difficulty){
         for(let i = 0; i <difficulty.birds; i++){
             ($('.gameBoard').append('<div class="duck1">'))
         }
-        let birdsGroup = $('.gameBoard div')
+        let birdsGroup = $('.gameBoard .duck1')
         for(let i = 0; i <difficulty.birds; i++){
             let currBird = birdsGroup[i];
             setTimeout(function(){
