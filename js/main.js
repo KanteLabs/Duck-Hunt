@@ -30,6 +30,8 @@ function startGame(){
 }
 function moveBird(difficulty){
     setTimeout(function(){
+        $(birdOne).css({width: `${difficulty.size}`})
+        $(birdOne).css({height: `${difficulty.size}`})
         $(birdOne).animate({left: `${Math.random()*15000}px`})
         $(birdOne).animate({top: `${Math.random()*500}px`})
         $(birdOne).css({transition: `${difficulty.speed}s`})
