@@ -25,7 +25,7 @@ const gameMode = [
 ]
 
 function startGame(){
-    let difficulty = 'easy'//prompt("Easy, Medium or Hard").toLowerCase();
+    let difficulty = 'medium'//prompt("Easy, Medium or Hard").toLowerCase();
     difficulty.match('easy') ? moveBird(gameMode[0]) : difficulty.match('hard') ? moveBird(gameMode[2]) : moveBird(gameMode[1]);
 }
 function moveBird(difficulty){
@@ -36,7 +36,7 @@ function moveBird(difficulty){
         $(birdOne).css({height: `${difficulty.size}`})
         $(birdOne).animate({left: `${randomDist}px`})
         $(birdOne).animate({top: `${randomTop}px`})
-        $(birdOne).css({transition: `${difficulty.speed}s`})
+        $(birdOne).css({transition: `${difficulty.speed}s linear`})
     },100)
 }
 $(birdOne).click(function(){
