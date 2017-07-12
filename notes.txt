@@ -1,0 +1,16 @@
+MVP
+- 1 difficulty
+- shoot bird
+- # bullets
+- game over
+- score
+- play once
+
+goals
+- 3 difficulty
+- make scoreboard
+- rounds
+- clean up look
+
+global even listener on body that could listen for all
+click events such as missing the bird
