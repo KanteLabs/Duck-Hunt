@@ -1,10 +1,12 @@
 .bird1{
-    width: 150px;
-    height: 150px;
-    background: url('../images/duck.gif');
+    width: 100px;
+    height: 100px;
+    background: url('../images/duck.gif') center no-repeat;
+    background-size: contain;
     position: relative;
     top: 500px;
-    transition: 4s;
+    transition: 1s linear;
     cursor: pointer;
+    transform: rotateY(180deg);
 }
 
