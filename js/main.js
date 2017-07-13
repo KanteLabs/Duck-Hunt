@@ -40,21 +40,22 @@ function moveBird(difficulty){
     if(difficulty.birds >= 2){
         
         for(let i = 0; i <difficulty.birds; i++){
-            ($('.gameBoard').append('<div class="duck1">'))
+            ($('.gameBoard').append(`<div class="duck1" id="${i}">`))
         }
 
         let birdsGroup = $('.gameBoard .duck1')
 
-        $('.duck1').click(function(e){
-            console.log(e)
-            $(this).animate({transition: '0s'})
-            $(this).css({background: "url('./images/shotDuck.png') center no-repeat"})
-            $(this).css({top: `${e.pageY - e.offsetY}px`})
-            $(this).css({left: `${e.pageX - e.offsetX}px`})
-            setTimeout(()=>{
-                $(this).css({visibility: 'hidden'});
-            },700)
-        })
+        // $('.duck1').click(function(e){
+        //     console.log(e)
+        //     birdIsHit.call(this)
+        //     // $(this).animate({transition: '0s'})
+        //     // $(this).css({background: "url('./images/shotDuck.png') center no-repeat"})
+        //     // $(this).css({top: `${e.pageY - e.offsetY}px`})
+        //     // $(this).css({left: `${e.pageX - e.offsetX}px`})
+        //     // setTimeout(()=>{
+        //     //     $(this).css({visibility: 'hidden'});
+        //     // },700)
+        // })
 
         for(let i = 0; i <difficulty.birds; i++){
             let currBird = birdsGroup[i];
@@ -82,24 +83,34 @@ function moveBird(difficulty){
         },100)
     }
 }
-$(birdOne).click(function(e){
-    $(this).animate({transition: '0s'})
-    $(this).css({background: "url('./images/shotDuck.png') center no-repeat"})
-    $(this).css({top: `${e.pageY}px`})
-    $(this).css({left: `${e.pageX}px`})
-    setTimeout(()=>{
-        $(this).css({visibility: 'hidden'});
-    },700)
-})
+// $(birdOne).click(function(e){
+//     // $(this).animate({transition: '0s'})
+//     // $(this).css({background: "url('./images/shotDuck.png') center no-repeat"})
+//     // $(this).css({top: `${e.pageY}px`})
+//     // $(this).css({left: `${e.pageX}px`})
+//     // setTimeout(()=>{
+//     //     $(this).css({visibility: 'hidden'});
+//     // },700)
+//     birdIsHit.call(this)
+// })
 
 function birdIsHit(e){
+    let id = e.target.id;
     console.log('hit')
-    currScore+=500;
+    console.log(e.target.id)
+    currScore+=100;
     localStorage.setItem('score', currScore);
     $score.text(parseInt(localStorage.getItem('score')));
+    $(`#${id}`).animate({transition: '0s'})
+    $(`#${id}`).css({background: "url('./images/shotDuck.png') center no-repeat"})
+    $(`#${id}`).css({top: `${e.pageY - e.offsetY}px`})
+    $(`#${id}`).css({left: `${e.pageX - e.offsetX}px`})
+    setTimeout(()=>{
+        $(`#${id}`).css({visibility: 'hidden'});
+    },700)
 }
 
 $('body').click((e)=>{
     console.log(e)
-    e.target.className == 'gameBoard' ? console.log('shot missed') : e.target.className('duck1') ? birdIsHit() : console.log('shot missed')
+    e.target.className == 'gameBoard' ? console.log('shot missed') : e.target.className == 'duck1' ? birdIsHit.call(this, e) : console.log('shot missed')
 })
