@@ -24,8 +24,8 @@
 .hud {
     position: absolute;
     bottom: 0;
+    font-size: 5em;
 }
 
 .round p {
-    font-size: 5em;
 }

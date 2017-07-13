@@ -3,10 +3,10 @@ window.onload = function(){
     startGame() 
 }
 
+let currScore = 0;
 const birdOne = $('.duck1');
 const birdTwo = $('.duck2');
-const $score = $('.score p')
-let currScore = 0;
+const $score = $('.score p');
 
 const gameMode = [
     easy = {
@@ -53,7 +53,7 @@ function moveBird(difficulty){
             $(this).css({top: `${e.pageY - e.offsetY}px`})
             $(this).css({left: `${e.pageX - e.offsetX}px`})
             setTimeout(()=>{
-                $(this).css({opacity: '0'});
+                $(this).css({visibility: 'hidden'});
             },700)
         })
 
@@ -89,7 +89,7 @@ $(birdOne).click(function(e){
     $(this).css({top: `${e.pageY}px`})
     $(this).css({left: `${e.pageX}px`})
     setTimeout(()=>{
-        $(this).css({opacity: '0'});
+        $(this).css({visibility: 'hidden'});
     },700)
 })
 
