@@ -5,9 +5,7 @@ window.onload = function(){
 
 let currScore = 0;
 const birdOne = $('.duck1');
-const birdTwo = $('.duck2');
 const $score = $('.score p');
-
 const gameMode = [
     easy = {
         speed: 10, 
@@ -26,7 +24,7 @@ const gameMode = [
         bullets: 1
     },insane = {
         speed: 1,
-        birds: 10,
+        birds: 20,
         size: '100px',
         bullets: 3
     }
@@ -48,6 +46,7 @@ function moveBird(difficulty){
         let birdsGroup = $('.gameBoard .duck1')
 
         $('.duck1').click(function(e){
+            console.log(e)
             $(this).animate({transition: '0s'})
             $(this).css({background: "url('./images/shotDuck.png') center no-repeat"})
             $(this).css({top: `${e.pageY - e.offsetY}px`})
@@ -102,5 +101,5 @@ function birdIsHit(e){
 
 $('body').click((e)=>{
     console.log(e)
-    e.target.className == 'gameBoard' ? console.log('shot missed') : birdIsHit();
+    e.target.className == 'gameBoard' ? console.log('shot missed') : e.target.className('duck1') ? birdIsHit() : console.log('shot missed')
 })
