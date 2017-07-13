@@ -32,6 +32,8 @@ function startGame(){
     difficulty.match('easy') ? moveBird(gameMode[0]) : difficulty.match('hard') ? moveBird(gameMode[2]) : moveBird(gameMode[1]);
 }
 function moveBird(difficulty){
+    localStorage.setItem('bulletCount', difficulty.bullets)
+    console.log(localStorage.bulletCount)
     if(difficulty.birds >= 2){
         for(let i = 0; i <difficulty.birds; i++){
             ($('.gameBoard').append(`<div class="duck1" id="${i}">`))
@@ -80,8 +82,15 @@ function duckIsHit(e){
 
 function missedShot(){
     let bullet = '🔫';
-    console.log(difficulty)
+    shotsRemaining = localStorage.bulletCount - 1;
+    localStorage.setItem('bulletCount', shotsRemaining);
+    console.log(localStorage.bulletCount)
     console.log('Missed shot')
+    localStorage.bulletCount <= 0 ? gameOver() : null;
+}
+
+function gameOver(){
+    console.log('Game Over')
 }
 
 $('body').click((e)=>{
