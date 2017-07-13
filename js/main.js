@@ -40,11 +40,14 @@ function startGame(){
 }
 function moveBird(difficulty){
     if(difficulty.birds >= 2){
+        
         for(let i = 0; i <difficulty.birds; i++){
             ($('.gameBoard').append('<div class="duck1">'))
         }
+
+        let birdsGroup = $('.gameBoard .duck1')
+
         $('.duck1').click(function(e){
-            console.log(e);
             $(this).animate({transition: '0s'})
             $(this).css({background: "url('./images/shotDuck.png') center no-repeat"})
             $(this).css({top: `${e.pageY - e.offsetY}px`})
@@ -52,9 +55,8 @@ function moveBird(difficulty){
             setTimeout(()=>{
                 $(this).css({opacity: '0'});
             },700)
-            birdIsHit(event);
         })
-        let birdsGroup = $('.gameBoard .duck1')
+
         for(let i = 0; i <difficulty.birds; i++){
             let currBird = birdsGroup[i];
             setTimeout(function(){
@@ -82,8 +84,6 @@ function moveBird(difficulty){
     }
 }
 $(birdOne).click(function(e){
-    console.log("Hit")
-    // localStorage.setItem(score, "500")
     $(this).animate({transition: '0s'})
     $(this).css({background: "url('./images/shotDuck.png') center no-repeat"})
     $(this).css({top: `${e.pageY}px`})
@@ -94,8 +94,13 @@ $(birdOne).click(function(e){
 })
 
 function birdIsHit(e){
+    console.log('hit')
     currScore+=500;
     localStorage.setItem('score', currScore);
-    $score.text(parseInt(localStorage.getItem('score')))
-    console.log(e)
+    $score.text(parseInt(localStorage.getItem('score')));
 }
+
+$('body').click((e)=>{
+    console.log(e)
+    e.target.className == 'gameBoard' ? console.log('shot missed') : birdIsHit();
+})
