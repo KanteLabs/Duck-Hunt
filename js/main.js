@@ -5,6 +5,9 @@ window.onload = function(){
 
 const birdOne = $('.duck1');
 const birdTwo = $('.duck2');
+const $score = $('.score p')
+let currScore = 0;
+
 const gameMode = [
     easy = {
         speed: 10, 
@@ -30,6 +33,8 @@ const gameMode = [
 ]
 
 function startGame(){
+    localStorage.score = 0;
+    localStorage.score != 0 ? $score.text(parseInt(localStorage.score)) : $score.text('0');
     let difficulty = 'medium'//prompt("Easy, Medium, Hard or Insane?").toLowerCase();
     difficulty.match('easy') ? moveBird(gameMode[0]) : difficulty.match('hard') ? moveBird(gameMode[2]) : moveBird(gameMode[1]);
 }
@@ -42,8 +47,8 @@ function moveBird(difficulty){
             console.log(e);
             $(this).animate({transition: '0s'})
             $(this).css({background: "url('./images/shotDuck.png') center no-repeat"})
-            $(this).css({top: `${e.pageY}px`})
-            $(this).css({left: `${e.pageX}px`})
+            $(this).css({top: `${e.pageY - e.offsetY}px`})
+            $(this).css({left: `${e.pageX - e.offsetX}px`})
             setTimeout(()=>{
                 $(this).css({opacity: '0'});
             },700)
@@ -76,16 +81,21 @@ function moveBird(difficulty){
         },100)
     }
 }
-$(birdOne).click(function(){
+$(birdOne).click(function(e){
     console.log("Hit")
     // localStorage.setItem(score, "500")
     $(this).animate({transition: '0s'})
     $(this).css({background: "url('./images/shotDuck.png') center no-repeat"})
+    $(this).css({top: `${e.pageY}px`})
+    $(this).css({left: `${e.pageX}px`})
     setTimeout(()=>{
         $(this).css({opacity: '0'});
     },700)
 })
 
 function birdIsHit(e){
+    currScore+=500;
+    localStorage.setItem('score', currScore);
+    $score.text(parseInt(localStorage.getItem('score')))
     console.log(e)
 }
