@@ -28,7 +28,7 @@ const gameMode = [
 function startGame(){
     localStorage.score = 0;
     localStorage.score != 0 ? $score.text(parseInt(localStorage.score)) : $score.text('0');
-    let difficulty = 'easy'//prompt("Easy, Medium, Hard or Insane?").toLowerCase();
+    let difficulty = 'medium'//prompt("Easy, Medium, Hard or Insane?").toLowerCase();
     difficulty.match('easy') ? moveBird(gameMode[0]) : difficulty.match('hard') ? moveBird(gameMode[2]) : moveBird(gameMode[1]);
 }
 function moveBird(difficulty){
