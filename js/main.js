@@ -4,24 +4,25 @@ window.onload = function(){
 }
 
 let currScore = 0;
+let bulletBar = $('.bullets p');
 const $score = $('.score p');
 const gameMode = [
     easy = {
         speed: 10, 
         birds: 1,
-        bullets: 5
+        bullets: ['🔫','🔫','🔫','🔫','🔫']
     },medium = {
         speed: 10, 
         birds: 4,
-        bullets: 3
+        bullets: ['🔫','🔫','🔫']
     },hard = {
         speed: 1, 
         birds: 3,
-        bullets: 1
+        bullets: ['🔫','🔫','🔫']
     },insane = {
         speed: 1,
         birds: 20,
-        bullets: 3
+        bullets: ['🔫','🔫','🔫','🔫','🔫']
     }
 ]
 
@@ -31,8 +32,13 @@ function startGame(){
     let difficulty = 'medium'//prompt("Easy, Medium, Hard or Insane?").toLowerCase();
     difficulty.match('easy') ? moveBird(gameMode[0]) : difficulty.match('hard') ? moveBird(gameMode[2]) : moveBird(gameMode[1]);
 }
+function gameSetUp(){
+
+}
 function moveBird(difficulty){
-    localStorage.setItem('bulletCount', difficulty.bullets)
+    let bullLen = difficulty.bullets.length;
+    bulletBar.text(difficulty.bullets.join(''))
+    localStorage.setItem('bulletCount', bullLen)
     console.log(localStorage.bulletCount)
     if(difficulty.birds >= 2){
         for(let i = 0; i <difficulty.birds; i++){
@@ -67,7 +73,6 @@ function moveBird(difficulty){
 function duckIsHit(e){
     let id = e.target.id;
     console.log('hit')
-    console.log(e.target.id)
     currScore+=100;
     localStorage.setItem('score', currScore);
     $score.text(parseInt(localStorage.getItem('score')));
@@ -81,13 +86,14 @@ function duckIsHit(e){
 }
 
 function missedShot(){
+    let bullet = '🔫';
     $('body').toggleClass('missed')
     setTimeout(()=>{
         $('body').toggleClass('missed')
     }, 200)
-    let bullet = '🔫';
     shotsRemaining = localStorage.bulletCount - 1;
     localStorage.setItem('bulletCount', shotsRemaining);
+    bulletBar.text(shotsRemaining)
     console.log(localStorage.bulletCount)
     console.log('Missed shot')
     localStorage.bulletCount <= 0 ? gameOver() : null;
