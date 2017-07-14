@@ -29,7 +29,7 @@ const gameMode = [
 function startGame(){
     localStorage.score = 0;
     localStorage.score != 0 ? $score.text(parseInt(localStorage.score)) : $score.text('0');
-    let difficulty = 'easy'//prompt("Easy, Medium, Hard or Insane?").toLowerCase();
+    let difficulty = 'medium'//prompt("Easy, Medium, Hard or Insane?").toLowerCase();
     difficulty.match('easy') ? gameSetUp(gameMode[0]) : 
     difficulty.match('hard') ? gameSetUp(gameMode[2]) : 
     difficulty.match('medium') ? gameSetUp(gameMode[1]) : gameSetUp(gameMode[3]);
