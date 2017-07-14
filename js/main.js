@@ -96,7 +96,7 @@ function missedShot(){
     }, 200)
     shotsRemaining = localStorage.bulletCount - 1;
     localStorage.setItem('bulletCount', shotsRemaining);
-    bulletBar.text(shotsRemaining)
+    bulletBar.text(`${shotsRemaining} 🔫 left`)
     console.log(localStorage.bulletCount)
     console.log('Missed shot')
     localStorage.bulletCount <= 0 ? gameOver() : null;
