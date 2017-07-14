@@ -3,6 +3,10 @@ window.onload = function(){
     startGame() 
 }
 
+$(document).bind('mousemove', (e)=>{
+    $('#gunFollow').css({left:  e.pageX + 20});
+})
+
 let currScore = 0;
 let bulletBar = $('.bullets p');
 const $score = $('.score p');
@@ -33,7 +37,7 @@ const gameMode = [
 function startGame(){
     localStorage.score = 0;
     localStorage.score != 0 ? $score.text(parseInt(localStorage.score)) : $score.text('0');
-    let difficulty = 'hard'//prompt("Easy, Medium, Hard or Insane?").toLowerCase();
+    let difficulty = 'easy'//prompt("Easy, Medium, Hard or Insane?").toLowerCase();
     difficulty.match('easy') ? gameSetUp(gameMode[0]) : 
     difficulty.match('hard') ? gameSetUp(gameMode[2]) : 
     difficulty.match('medium') ? gameSetUp(gameMode[1]) : gameSetUp(gameMode[3]);
