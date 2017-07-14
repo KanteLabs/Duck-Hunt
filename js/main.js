@@ -30,16 +30,16 @@ function startGame(){
     localStorage.score = 0;
     localStorage.score != 0 ? $score.text(parseInt(localStorage.score)) : $score.text('0');
     let difficulty = 'medium'//prompt("Easy, Medium, Hard or Insane?").toLowerCase();
-    difficulty.match('easy') ? moveBird(gameMode[0]) : difficulty.match('hard') ? moveBird(gameMode[2]) : moveBird(gameMode[1]);
+    difficulty.match('easy') ? gameSetUp(gameMode[0]) : difficulty.match('hard') ? gameSetUp(gameMode[2]) : gameSetUp(gameMode[1]);
 }
-function gameSetUp(){
-
-}
-function moveBird(difficulty){
+function gameSetUp(difficulty){
     let bullLen = difficulty.bullets.length;
     bulletBar.text(difficulty.bullets.join(''))
     localStorage.setItem('bulletCount', bullLen)
-    console.log(localStorage.bulletCount)
+    console.log(`Player has ${localStorage.bulletCount} shots`)
+    moveBird(difficulty)
+}
+function moveBird(difficulty){
     if(difficulty.birds >= 2){
         for(let i = 0; i <difficulty.birds; i++){
             ($('.gameBoard').append(`<div class="duck1" id="${i}">`))
@@ -86,7 +86,6 @@ function duckIsHit(e){
 }
 
 function missedShot(){
-    let bullet = '🔫';
     $('body').toggleClass('missed')
     setTimeout(()=>{
         $('body').toggleClass('missed')
