@@ -6,6 +6,7 @@ window.onload = function(){
 let currScore = 0;
 let bulletBar = $('.bullets p');
 const $score = $('.score p');
+const bodySize = document.querySelector('body').getBoundingClientRect(); //Use for defining the bounding box of the dom
 const gameMode = [
     easy = {
         speed: 10, 
@@ -27,6 +28,7 @@ const gameMode = [
 ]
 
 function startGame(){
+    console.log(document.querySelector('body').getBoundingClientRect())
     localStorage.score = 0;
     localStorage.score != 0 ? $score.text(parseInt(localStorage.score)) : $score.text('0');
     let difficulty = 'medium'//prompt("Easy, Medium, Hard or Insane?").toLowerCase();
@@ -40,6 +42,9 @@ function gameSetUp(difficulty){
     localStorage.setItem('bulletCount', bullLen)
     console.log(`Player has ${localStorage.bulletCount} shots`)
     moveBird(difficulty)
+}
+function duckLocation(){
+    
 }
 function moveBird(difficulty){
     if(difficulty.birds >= 2){
@@ -57,7 +62,7 @@ function moveBird(difficulty){
                 $(currBird).animate({top: `${randomTop}px`})
                 $(currBird).css({transition: `${difficulty.speed}s linear`})
             })
-            setInterval(birdsMove, 3000)
+            // setInterval(birdsMove, 3000)
         }
     }else {
         ($('.gameBoard').append(`<div class="duck1" id="${0}">`))
@@ -70,7 +75,7 @@ function moveBird(difficulty){
             $(duckOne).animate({top: `${randomTop}px`})
             $(duckOne).css({transition: `${difficulty.speed}s linear`})
         },100)
-        setInterval(birdsMove, 3000)
+        // setInterval(birdsMove, 3000)
     }
 }
 
@@ -104,7 +109,7 @@ function missedShot(){
 
 function gameOver(){
     // location.reload()
-    $('.gameOver')
+    $('.gameOver').css({display: 'block'})
     console.log('Game Over')
 }
 
