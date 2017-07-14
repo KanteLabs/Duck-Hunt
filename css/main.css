@@ -9,8 +9,8 @@
     background-size: cover;
 }
 .duck1{
-    top: 500px;
-    left: -500px;
+    top: 800px;
+    left: -1000px;
     width: 150px;
     height: 150px;
     background: url('../images/duck2.gif') center no-repeat;

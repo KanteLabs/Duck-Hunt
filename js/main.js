@@ -21,7 +21,7 @@ const gameMode = [
         bullets: ['🔫','🔫','🔫']
     },insane = {
         speed: 1,
-        birds: 20,
+        birds: 200,
         bullets: ['🔫','🔫','🔫','🔫','🔫']
     }
 ]
@@ -30,7 +30,9 @@ function startGame(){
     localStorage.score = 0;
     localStorage.score != 0 ? $score.text(parseInt(localStorage.score)) : $score.text('0');
     let difficulty = 'medium'//prompt("Easy, Medium, Hard or Insane?").toLowerCase();
-    difficulty.match('easy') ? gameSetUp(gameMode[0]) : difficulty.match('hard') ? gameSetUp(gameMode[2]) : gameSetUp(gameMode[1]);
+    difficulty.match('easy') ? gameSetUp(gameMode[0]) : 
+    difficulty.match('hard') ? gameSetUp(gameMode[2]) : 
+    difficulty.match('medium') ? gameSetUp(gameMode[1]) : gameSetUp(gameMode[3]);
 }
 function gameSetUp(difficulty){
     let bullLen = difficulty.bullets.length;
@@ -48,8 +50,8 @@ function moveBird(difficulty){
         for(let i = 0; i <difficulty.birds; i++){
             let currBird = birdsGroup[i];
             setTimeout(function(){
-            randomDist = (Math.random() * (2300 - 2000) + 2000); //specify random range for the distance
-            randomTop = (Math.random() * (500 - (-300)) + (-300)); //specify random range for the height
+            randomDist = (Math.random() * (2300 - 1500) + 1500); //specify random range for the distance
+            randomTop = (Math.random() * (500 - (-1000)) + (-1000)); //specify random range for the height
                 $(currBird).css({display: 'block'})
                 $(currBird).animate({left: `${randomDist}px`})
                 $(currBird).animate({top: `${randomTop}px`})
@@ -99,6 +101,7 @@ function missedShot(){
 }
 
 function gameOver(){
+    // location.reload()
     console.log('Game Over')
 }
 
