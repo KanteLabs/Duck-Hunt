@@ -1,9 +1,9 @@
 MVP
-- 1 difficulty
-- shoot bird
-- # bullets
+- 1 difficulty 
+- shoot bird - done
+- # bullets - done
 - game over
-- score
+- score - done
 - play once
 
 goals
