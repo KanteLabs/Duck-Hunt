@@ -6,32 +6,34 @@ window.onload = function(){
 let currScore = 0;
 let bulletBar = $('.bullets p');
 const $score = $('.score p');
-const bodySize = document.querySelector('body').getBoundingClientRect(); //Use for defining the bounding box of the dom
 const gameMode = [
     easy = {
-        speed: 10, 
-        birds: 1,
-        bullets: ['🔫','🔫','🔫','🔫','🔫']
-    },medium = {
-        speed: 8, 
-        birds: 4,
-        bullets: ['🔫','🔫','🔫']
-    },hard = {
         speed: 1, 
-        birds: 3,
-        bullets: ['🔫','🔫','🔫']
+        birds: 5,
+        bullets: ['🔫','🔫','🔫','🔫','🔫'],
+        target: 500
+    },medium = {
+        speed: 2, 
+        birds: 10,
+        bullets: ['🔫','🔫','🔫'],
+        target: 1000
+    },hard = {
+        speed: 2, 
+        birds: 25,
+        bullets: ['🔫','🔫','🔫'],
+        target: 2500   
     },insane = {
         speed: 1,
-        birds: 200,
-        bullets: ['🔫','🔫','🔫','🔫','🔫']
+        birds: 100,
+        bullets: ['🔫','🔫','🔫','🔫','🔫'],
+        target: 100000
     }
 ]
 
 function startGame(){
-    console.log(document.querySelector('body').getBoundingClientRect())
     localStorage.score = 0;
     localStorage.score != 0 ? $score.text(parseInt(localStorage.score)) : $score.text('0');
-    let difficulty = 'medium'//prompt("Easy, Medium, Hard or Insane?").toLowerCase();
+    let difficulty = 'hard'//prompt("Easy, Medium, Hard or Insane?").toLowerCase();
     difficulty.match('easy') ? gameSetUp(gameMode[0]) : 
     difficulty.match('hard') ? gameSetUp(gameMode[2]) : 
     difficulty.match('medium') ? gameSetUp(gameMode[1]) : gameSetUp(gameMode[3]);
@@ -43,9 +45,7 @@ function gameSetUp(difficulty){
     console.log(`Player has ${localStorage.bulletCount} shots`)
     moveBird(difficulty)
 }
-function duckLocation(){
-    
-}
+
 function moveBird(difficulty){
     if(difficulty.birds >= 2){
         for(let i = 0; i <difficulty.birds; i++){
@@ -56,13 +56,22 @@ function moveBird(difficulty){
             let currBird = birdsGroup[i];
             setTimeout(birdsMove=()=>{
             randomDist = (Math.random() * (2300 - 1500) + 1500); //specify random range for the distance
-            randomTop = (Math.random() * (500 - (-1000)) + (-1000)); //specify random range for the height
+            randomTop = (Math.random() * (700 - (-300)) + (-300)); //specify random range for the height
                 $(currBird).css({display: 'block'})
                 $(currBird).animate({left: `${randomDist}px`})
                 $(currBird).animate({top: `${randomTop}px`})
                 $(currBird).css({transition: `${difficulty.speed}s linear`})
             })
-            // setInterval(birdsMove, 3000)
+            setTimeout(birdsMoveDown=()=>{
+            randomDist = (Math.random() * (1500 - 0) + 0); //specify random range for the distance
+            randomTop = (Math.random() * (700 - (-300)) + (-300)); //specify random range for the height
+                $(currBird).css({display: 'block'})
+                $(currBird).animate({left: `${randomDist}px`})
+                $(currBird).animate({top: `${randomTop}px`})
+                $(currBird).css({transition: `${difficulty.speed}s linear`})
+            }, 5000)
+            setInterval(birdsMoveDown, 1000)
+            setInterval(birdsMove, 2500)
         }
     }else {
         ($('.gameBoard').append(`<div class="duck1" id="${0}">`))
@@ -91,7 +100,7 @@ function duckIsHit(e){
     $(`#${id}`).css({left: `${e.pageX - e.offsetX}px`})
     setTimeout(()=>{
         $(`#${id}`).css({visibility: 'hidden'});
-    },700)
+    }, 700)
 }
 
 function missedShot(){
