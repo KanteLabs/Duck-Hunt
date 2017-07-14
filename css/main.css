@@ -1,3 +1,7 @@
+.missed{
+    opacity: 0.5;
+    background: red;
+}
 .gameBoard {
     background: url('../images/stage.png') center no-repeat;
     width: 100vw;

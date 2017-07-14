@@ -81,6 +81,10 @@ function duckIsHit(e){
 }
 
 function missedShot(){
+    $('body').toggleClass('missed')
+    setTimeout(()=>{
+        $('body').toggleClass('missed')
+    }, 200)
     let bullet = '🔫';
     shotsRemaining = localStorage.bulletCount - 1;
     localStorage.setItem('bulletCount', shotsRemaining);
