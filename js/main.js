@@ -104,6 +104,7 @@ function missedShot(){
 
 function gameOver(){
     // location.reload()
+    $('.gameOver')
     console.log('Game Over')
 }
 
