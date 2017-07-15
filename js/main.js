@@ -12,9 +12,9 @@ let bulletBar = $('.bullets p');
 const $score = $('.score p');
 const gameMode = [
     easy = {
-        speed: 1, 
+        speed: 3, 
         birds: 5,
-        bullets: ['🔫','🔫','🔫','🔫','🔫'],
+        bullets: ['🔫','🔫','🔫'],
         target: 500
     },medium = {
         speed: 2, 
@@ -24,7 +24,7 @@ const gameMode = [
     },hard = {
         speed: 2, 
         birds: 25,
-        bullets: ['🔫','🔫','🔫'],
+        bullets: ['🔫','🔫','🔫','🔫','🔫'],
         target: 2500   
     },insane = {
         speed: 1,
@@ -44,8 +44,10 @@ function startGame(){
 }
 function gameSetUp(difficulty){
     let bullLen = difficulty.bullets.length;
+    let winTarget = difficulty.target;
     bulletBar.text(difficulty.bullets.join(''))
     localStorage.setItem('bulletCount', bullLen)
+    localStorage.setItem('target', winTarget)
     console.log(`Player has ${localStorage.bulletCount} shots`)
     moveBird(difficulty)
 }
@@ -61,18 +63,18 @@ function moveBird(difficulty){
             setTimeout(birdsMove=()=>{
             randomDist = (Math.random() * (2300 - 1500) + 1500); //specify random range for the distance
             randomTop = (Math.random() * (700 - (-300)) + (-300)); //specify random range for the height
+                $(currBird).css({transition: `${difficulty.speed}s linear`})
                 $(currBird).css({display: 'block'})
                 $(currBird).animate({left: `${randomDist}px`})
                 $(currBird).animate({top: `${randomTop}px`})
-                $(currBird).css({transition: `${difficulty.speed}s linear`})
             })
             setTimeout(birdsMoveDown=()=>{
             randomDist = (Math.random() * (1500 - 0) + 0); //specify random range for the distance
             randomTop = (Math.random() * (700 - (-300)) + (-300)); //specify random range for the height
+                $(currBird).css({transition: `${difficulty.speed}s linear`})
                 $(currBird).css({display: 'block'})
                 $(currBird).animate({left: `${randomDist}px`})
                 $(currBird).animate({top: `${randomTop}px`})
-                $(currBird).css({transition: `${difficulty.speed}s linear`})
             }, 5000)
             setInterval(birdsMoveDown, 1000)
             setInterval(birdsMove, 2500)
@@ -83,10 +85,10 @@ function moveBird(difficulty){
         setTimeout(birdsMove=()=>{
         randomDist = (Math.random() * (2300 - 2000) + 2000); //specify random range for the distance
         randomTop = (Math.random() * (500 - (-300)) + (-300)); //specify random range for the height
+            $(duckOne).css({transition: `${difficulty.speed}s linear`})
             $(duckOne).css({display: 'block'})
             $(duckOne).animate({left: `${randomDist}px`})
             $(duckOne).animate({top: `${randomTop}px`})
-            $(duckOne).css({transition: `${difficulty.speed}s linear`})
         },100)
         // setInterval(birdsMove, 3000)
     }
@@ -105,6 +107,8 @@ function duckIsHit(e){
     setTimeout(()=>{
         $(`#${id}`).css({visibility: 'hidden'});
     }, 700)
+
+    localStorage.target == currScore ? startGame() : null
 }
 
 function missedShot(){
@@ -125,7 +129,9 @@ function gameOver(){
     $('.gameOver').css({display: 'block'})
     console.log('Game Over')
 }
+function gameWon(){
 
+}
 $('body').click((e)=>{
     console.log(e)
     e.target.className == 'gameBoard' ? missedShot() : 
