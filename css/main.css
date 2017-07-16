@@ -1,5 +1,6 @@
 body{
     font-family: 'Roboto', sans-serif;
+    overflow: hidden;
 }
 .missed{
     opacity: 0.5;
@@ -48,12 +49,13 @@ div#gunFollow {
     width: 100%;
     height: 100px;
     position: absolute;
-    bottom: 3em;
+    bottom: 2em;
 }
 
 #gunFollow img {
     position: absolute;
     left: -1em;
+    float: right;
 }
 .play {
     cursor: pointer;

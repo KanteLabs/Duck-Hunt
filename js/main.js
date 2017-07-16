@@ -1,15 +1,24 @@
 window.onload = function(){
     console.log("Game Ready"); 
-    startGame() 
+    startGame()
 }
-
-$(document).bind('mousemove', (e)=>{
+ $(document).bind('mousemove', (e)=>{
     $('#gunFollow').css({left:  e.pageX + 20});
 })
 
 let currScore = 0;
 let bulletBar = $('.bullets p');
 const $score = $('.score p');
+// Sound Effects
+const wonSound = document.createElement('audio'),
+      lostSound = document.createElement('audio'),  
+      ducks = document.createElement('audio'),
+      gunShot = document.createElement('audio');
+gunShot.setAttribute('src', './sound/gun.mp3');  
+lostSound.setAttribute('src', './sound/lost.mp3');  
+wonSound.setAttribute('src', './sound/won.mp3');  
+ducks.setAttribute('src', './sound/ducks.mp3');  
+
 const gameMode = [
     easy = {
         speed: 3, 
@@ -37,10 +46,12 @@ const gameMode = [
 function startGame(){
     localStorage.score = 0;
     localStorage.score != 0 ? $score.text(parseInt(localStorage.score)) : $score.text('0');
-    let difficulty = 'easy'//prompt("Easy, Medium, Hard or Insane?").toLowerCase();
+
+    let difficulty = prompt("Easy, Medium, Hard or Insane?").toLowerCase();
     difficulty.match('easy') ? gameSetUp(gameMode[0]) : 
     difficulty.match('hard') ? gameSetUp(gameMode[2]) : 
     difficulty.match('medium') ? gameSetUp(gameMode[1]) : gameSetUp(gameMode[3]);
+    
 }
 function gameSetUp(difficulty){
     let bullLen = difficulty.bullets.length;
@@ -53,6 +64,7 @@ function gameSetUp(difficulty){
 }
 
 function moveBird(difficulty){
+    ducks.play();
     if(difficulty.birds >= 2){
         for(let i = 0; i <difficulty.birds; i++){
             ($('.gameBoard').append(`<div class="duck1" id="${i}">`))
@@ -126,15 +138,18 @@ function missedShot(){
 
 function gameOver(){
     // location.reload()
+    lostSound.play();
     $('.gameOver').css({display: 'block'})
-    console.log('Game Over')
+    console.log('Game Over - Lost')
 }
 function gameWon(){
+    wonSound.play()
     $('.gameWon').css({display: 'block'})
-    console.log('Game Over')
+    console.log('Game Over - Won')
 }
 $('body').click((e)=>{
     console.log(e)
+    gunShot.play();
     e.target.className == 'gameBoard' ? missedShot() : 
     e.target.className == 'duck1' ? duckIsHit.call(this, e) : missedShot();
 })
