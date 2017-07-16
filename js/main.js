@@ -108,7 +108,7 @@ function duckIsHit(e){
         $(`#${id}`).css({visibility: 'hidden'});
     }, 700)
 
-    localStorage.target == currScore ? startGame() : null
+    localStorage.target == currScore ? console.log('You won') : null
 }
 
 function missedShot(){

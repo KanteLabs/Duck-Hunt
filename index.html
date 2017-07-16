@@ -6,22 +6,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/reset.css" rel="stylesheet">
         <link href="css/main.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     </head>
     <body>
         <div class="gameBoard">
             <div class="hud">
-                <div class="round"><p>Round 1</p></div>
+                <div class="round"><p>Duck Hunt</p></div>
                 <div class="score"><p></p></div>
                 <div class="bullets"><p></p></div>
                 <!--<div class="birdHits"><p>🕊 🕊 🕊 🕊 🕊 🕊 🕊 🕊 🕊 🕊</p></div>-->
                 <div id="gunFollow"><img src="images/gunBarrell.png"></div>
             </div>
         </div>
-        <!--<div class="menu">
-            <p>Game Over</p>
-        </div>-->
         <div class="gameOver">
-            <p>Game Over</p>
+            <h1>You Lost 😂</h1>
+            <div class="play" onclick="location.reload()">Play Again?</div>
+        </div>
+        <div class="gameWon">
+            <h1>You Won! 💯</h1>
+            <div class="play" onclick="location.reload()">Play Again?</div>
         </div>
         <script src="js/jquery.js"></script>
         <!--<script src="js/inheritance.js"></script>
