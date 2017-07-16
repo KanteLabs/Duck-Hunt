@@ -108,7 +108,7 @@ function duckIsHit(e){
         $(`#${id}`).css({visibility: 'hidden'});
     }, 700)
 
-    localStorage.target == currScore ? console.log('You won') : null
+    localStorage.target == currScore ? gameWon() : null
 }
 
 function missedShot(){
@@ -130,7 +130,8 @@ function gameOver(){
     console.log('Game Over')
 }
 function gameWon(){
-
+    $('.gameWon').css({display: 'block'})
+    console.log('Game Over')
 }
 $('body').click((e)=>{
     console.log(e)
