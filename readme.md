@@ -16,7 +16,9 @@ kill all the ducks on the screen and reach the target score for the difficulty l
 ### Notes on Game Structure
 
 > Code samples, description of challenges you overcame, etc.
-The most challenging part of this project was getting the click events to work correctly and also getting the ducks to fly across the screen in a almost random manner. I focused a lot on using functions to control specific aspects of the game.
+The most challenging part of this project was getting the click events to work correctly and also getting the ducks to fly across the screen in a almost random manner. I focused a lot on using functions to control specific aspects of the game. I think I did a good job of pacing myself to complete this project. 
+
+I used open license assets such as sprites and audio clips in order for me create a more visually pleasing game.
 
 ## The Making of DuckHunt
 
