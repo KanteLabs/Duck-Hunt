@@ -30,7 +30,7 @@ const gameMode = [
     },medium = {
         speed: 2, 
         birds: 10,
-        bullets: ['🔫','🔫','🔫'],
+        bullets: ['🔫','🔫','🔫','🔫'],
         target: 1000
     },hard = {
         speed: 2, 
@@ -42,6 +42,11 @@ const gameMode = [
         birds: 100,
         bullets: ['🔫','🔫','🔫','🔫','🔫'],
         target: 100000
+    }, test = {
+        speed: 10,
+        birds: 1,
+        bullets: ['🔫','🔫','🔫','🔫','🔫','🔫','🔫','🔫','🔫','🔫'],
+        target: 1000
     }
 ]
 
@@ -99,19 +104,20 @@ function moveBird(difficulty){
             setInterval(birdsMoveDown, 1000)
             setInterval(birdsMove, 2500)
         }
-    }else {//Same thing as above but for one bird. not necessary anymore
-        ($('.gameBoard').append(`<div class="duck1" id="${0}">`))
-        let duckOne = $('.duck1');
-        setTimeout(birdsMove=()=>{
-        randomDist = (Math.random() * (2300 - 2000) + 2000); //specify random range for the distance
-        randomTop = (Math.random() * (500 - (-300)) + (-300)); //specify random range for the height
-            $(duckOne).css({transition: `${difficulty.speed}s linear`})
-            $(duckOne).css({display: 'block'})
-            $(duckOne).animate({left: `${randomDist}px`})
-            $(duckOne).animate({top: `${randomTop}px`})
-        },100)
-        // setInterval(birdsMove, 3000)
     }
+    // else {//Same thing as above but for one bird. not necessary anymore
+    //     ($('.gameBoard').append(`<div class="duck1" id="${0}">`))
+    //     let duckOne = $('.duck1');
+    //     setTimeout(birdsMove=()=>{
+    //     randomDist = (Math.random() * (2300 - 2000) + 2000); //specify random range for the distance
+    //     randomTop = (Math.random() * (500 - (-300)) + (-300)); //specify random range for the height
+    //         $(duckOne).css({transition: `${difficulty.speed}s linear`})
+    //         $(duckOne).css({display: 'block'})
+    //         $(duckOne).animate({left: `${randomDist}px`})
+    //         $(duckOne).animate({top: `${randomTop}px`})
+    //     },100)
+    //     // setInterval(birdsMove, 3000)
+    // }
 }
 
 //Sets the score whenever a bird gets hit
