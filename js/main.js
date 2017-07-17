@@ -43,8 +43,8 @@ const gameMode = [
         bullets: ['🔫','🔫','🔫','🔫','🔫'],
         target: 100000
     }, test = {
-        speed: 10,
-        birds: 1,
+        speed: 5,
+        birds: 3,
         bullets: ['🔫','🔫','🔫','🔫','🔫','🔫','🔫','🔫','🔫','🔫'],
         target: 1000
     }
@@ -57,8 +57,8 @@ function startGame(){
     let difficulty = prompt("Easy, Medium, Hard or Insane?").toLowerCase();
     difficulty.match('easy') ? gameSetUp(gameMode[0]) : 
     difficulty.match('hard') ? gameSetUp(gameMode[2]) : 
-    difficulty.match('medium') ? gameSetUp(gameMode[1]) : gameSetUp(gameMode[3]);
-    
+    difficulty.match('medium') ? gameSetUp(gameMode[1]) :
+    difficulty.match('insane') ? gameSetUp(gameMode[3]) : gameSetUp(gameMode[4]);   
 }
 
 //Initial game setup. Gets the target score, and amount of changes available. Then calls moveBird with the level difficulty
@@ -85,24 +85,24 @@ function moveBird(difficulty){
         let birdsGroup = $('.gameBoard .duck1')
         for(let i = 0; i <difficulty.birds; i++){
             let currBird = birdsGroup[i];
+            $(currBird).css({transition: `${difficulty.speed}s linear`})
+            $(currBird).css({display: 'block'})
             setTimeout(birdsMove=()=>{
             randomDist = (Math.random() * (2300 - 1500) + 1500); //specify random range for the distance
             randomTop = (Math.random() * (700 - (-300)) + (-300)); //specify random range for the height
-                $(currBird).css({transition: `${difficulty.speed}s linear`})
-                $(currBird).css({display: 'block'})
                 $(currBird).animate({left: `${randomDist}px`})
                 $(currBird).animate({top: `${randomTop}px`})
+                console.log('fun 1')
             })
             setTimeout(birdsMoveDown=()=>{
             randomDist = (Math.random() * (1500 - 0) + 0); //specify random range for the distance
             randomTop = (Math.random() * (700 - (-300)) + (-300)); //specify random range for the height
-                $(currBird).css({transition: `${difficulty.speed}s linear`})
-                $(currBird).css({display: 'block'})
                 $(currBird).animate({left: `${randomDist}px`})
                 $(currBird).animate({top: `${randomTop}px`})
+                console.log('fun 2')
             }, 5000)
-            setInterval(birdsMoveDown, 1000)
-            setInterval(birdsMove, 2500)
+            setInterval(birdsMoveDown(), 1000)
+            setInterval(birdsMove(), 2500)
         }
     }
     // else {//Same thing as above but for one bird. not necessary anymore
@@ -138,7 +138,7 @@ function duckIsHit(e){
     localStorage.target == currScore ? gameWon() : null
 }
 
-//Loses a life if a bird is mised.
+//Loses a life if a bird is missed.
 function missedShot(){
     $('body').toggleClass('missed')
     setTimeout(()=>{
