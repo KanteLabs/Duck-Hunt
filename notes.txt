@@ -1,14 +1,14 @@
 MVP
-- 1 difficulty 
+- 1 difficulty - done
 - shoot bird - done
 - # bullets - done
-- game over
+- game over - done
 - score - done
-- play once
+- play once - done
 
 goals
-- 3 difficulty
-- make scoreboard
+- 3 difficulty - done
+- make scoreboard - done
 - rounds
 - clean up look
 
