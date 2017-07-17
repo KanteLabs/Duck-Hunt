@@ -20,6 +20,7 @@ lostSound.setAttribute('src', './sound/lost.mp3');
 wonSound.setAttribute('src', './sound/won.mp3');  
 ducks.setAttribute('src', './sound/ducks.mp3');  
 
+//Different level difficulties 
 const gameMode = [
     easy = {
         speed: 3, 
@@ -54,6 +55,8 @@ function startGame(){
     difficulty.match('medium') ? gameSetUp(gameMode[1]) : gameSetUp(gameMode[3]);
     
 }
+
+//Initial game setup. Gets the target score, and amount of changes available. Then calls moveBird with the level difficulty
 function gameSetUp(difficulty){
     let bullLen = difficulty.bullets.length;
     let winTarget = difficulty.target;
@@ -70,6 +73,10 @@ function moveBird(difficulty){
         for(let i = 0; i <difficulty.birds; i++){
             ($('.gameBoard').append(`<div class="duck1" id="${i}">`))
         }
+        /* Grabs all the ducks on the game board and randomly gives it a new top and left position.
+        The first setTimeout runs and moves the ducks towards the right side of the screen and up, 
+        while the second timeOut moves the ducks back to the left and down. This alternates every 1.5 seconds to 
+        create a random movement. */
         let birdsGroup = $('.gameBoard .duck1')
         for(let i = 0; i <difficulty.birds; i++){
             let currBird = birdsGroup[i];
@@ -92,7 +99,7 @@ function moveBird(difficulty){
             setInterval(birdsMoveDown, 1000)
             setInterval(birdsMove, 2500)
         }
-    }else {
+    }else {//Same thing as above but for one bird. not necessary anymore
         ($('.gameBoard').append(`<div class="duck1" id="${0}">`))
         let duckOne = $('.duck1');
         setTimeout(birdsMove=()=>{
@@ -107,6 +114,7 @@ function moveBird(difficulty){
     }
 }
 
+//Sets the score whenever a bird gets hit
 function duckIsHit(e){
     let id = e.target.id;
     console.log('hit')
@@ -124,6 +132,7 @@ function duckIsHit(e){
     localStorage.target == currScore ? gameWon() : null
 }
 
+//Loses a life if a bird is mised.
 function missedShot(){
     $('body').toggleClass('missed')
     setTimeout(()=>{
@@ -138,7 +147,6 @@ function missedShot(){
 }
 
 function gameOver(){
-    // location.reload()
     lostSound.play();
     $('.gameOver').css({display: 'block'})
     console.log('Game Over - Lost')
