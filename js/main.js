@@ -2,8 +2,9 @@ window.onload = function(){
     console.log("Game Ready"); 
     startGame()
 }
+//This function allows the gun on the dom to follow the mouse while the game is playing. 
  $(document).bind('mousemove', (e)=>{
-    $('#gunFollow').css({left:  e.pageX + 20});
+    $('#gunFollow').css({left:  e.pageX + 10});
 })
 
 let currScore = 0;
@@ -44,9 +45,9 @@ const gameMode = [
 ]
 
 function startGame(){
+    //Sets the score to 0 if its not already at 0.
     localStorage.score = 0;
-    localStorage.score != 0 ? $score.text(parseInt(localStorage.score)) : $score.text('0');
-
+    $score.text(parseInt(localStorage.score));
     let difficulty = prompt("Easy, Medium, Hard or Insane?").toLowerCase();
     difficulty.match('easy') ? gameSetUp(gameMode[0]) : 
     difficulty.match('hard') ? gameSetUp(gameMode[2]) : 

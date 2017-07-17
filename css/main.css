@@ -32,8 +32,8 @@ body{
 .gameOver, .gameWon{
     display: none;
     position: relative;
-    top: -17em;
-    width: 400px;
+    top: -16em;
+    width: 500px;
     margin: 0 auto;
     font-size: 40px;
     background: rgba(60, 223, 41, 0.9);
@@ -44,6 +44,9 @@ body{
     text-align: center;
     font-weight: bold;
     letter-spacing: 3px;
+}
+.gameOver{
+    top: -20em;
 }
 div#gunFollow {
     width: 100%;
@@ -63,6 +66,7 @@ div#gunFollow {
     box-shadow: 0px 10px #E44F59;
     color: white;
     letter-spacing: 5px;
+    margin-bottom: 1em;
 }
 .play:active {
     position: relative;

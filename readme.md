@@ -2,9 +2,12 @@
 
 [screenshot]
 
-## What is [name of game]?
+## What is DuckHunt?
 
-> Brief discussion of what the game is and why you chose to make it
+DuckHunt is a simple point and click game that is playable in the browser. The objective of the game is to 
+kill all the ducks on the screen and reach the target score for the difficulty level. 
+
+![Duck hunt image](./images/screenshot.png)
 
 ## Technical Discussion
 
